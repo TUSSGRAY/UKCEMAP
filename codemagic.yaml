@@ -4,12 +4,12 @@ workflows:
     max_build_duration: 60
     environment:
       vars:
-      XCODE_WORKSPACE: "ukcemap.co.uk.xcworkspace"
-XCODE_SCHEME: "ukcemap.co.uk"
+        XCODE_WORKSPACE: "ukcemap.co.uk.xcworkspace"
+        XCODE_SCHEME: "ukcemap.co.uk"
     scripts:
-     - name: Install CocoaPods dependencies
-  script: |
-    pod install
+      - name: Install CocoaPods dependencies
+        script: |
+          pod install
       - name: Build iOS app
         script: |
           xcodebuild -workspace "$XCODE_WORKSPACE" \
@@ -17,11 +17,5 @@ XCODE_SCHEME: "ukcemap.co.uk"
                      -configuration Release \
                      -sdk iphoneos \
                      -archivePath build/UKCEMAP.xcarchive archive
-      - name: Export IPA
-        script: |
-          xcodebuild -exportArchive \
-                     -archivePath build/UKCEMAP.xcarchive \
-                     -exportOptionsPlist exportOptions.plist \
-                     -exportPath build/IPA
     artifacts:
-      - build/IPA/*.ipa
+      - build/UKCEMAP.xcarchive
