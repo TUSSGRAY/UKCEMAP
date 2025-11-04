@@ -4,12 +4,12 @@ workflows:
     max_build_duration: 60
     environment:
       vars:
-        XCODE_WORKSPACE: "ukcemap.co.uk.xcworkspace"
+        XCODE_PROJECT: "ukcemap.co.uk.xcodeproj"
         XCODE_SCHEME: "ukcemap.co.uk"
     scripts:
       - name: Build iOS app
         script: |
-          xcodebuild -workspace "$XCODE_WORKSPACE" \
+          xcodebuild -project "$XCODE_PROJECT" \
                      -scheme "$XCODE_SCHEME" \
                      -configuration Release \
                      -sdk iphoneos \
